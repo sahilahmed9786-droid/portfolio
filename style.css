@@ -1,156 +1,550 @@
-.project{
+/* ================= GLOBAL ================= */
 
-background:#1e293b;
-padding:20px;
-border-radius:10px;
-transition:0.3s;
-cursor:pointer;
-
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
-.project:hover{
-
-transform:translateY(-10px);
-box-shadow:0 15px 35px rgba(0,0,0,0.4);
-
-}
 body{
 
-background:linear-gradient(135deg,#0f172a,#020617);
+font-family:'Segoe UI',sans-serif;
+
+color:white;
+
+background:linear-gradient(-45deg,#020617,#0f172a,#020617,#0f172a);
+
+background-size:400% 400%;
+
+animation:gradientBG 15s ease infinite;
 
 }
+
+/* Animated gradient */
+
+@keyframes gradientBG{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+/* ================= PARTICLES BACKGROUND ================= */
+
+#particles-js{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+top:0;
+
+left:0;
+
+z-index:-1;
+
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 60px;
+
+background:rgba(2,6,23,0.9);
+
+backdrop-filter:blur(8px);
+
+position:sticky;
+
+top:0;
+
+z-index:100;
+
+}
+
+nav h2{
+
+letter-spacing:1px;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:25px;
+
+list-style:none;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+font-weight:500;
+
+transition:0.3s;
+
+}
+
+nav a:hover{
+
+color:#22c55e;
+
+}
+
+/* Theme toggle button */
+
+.theme-btn{
+
+background:#22c55e;
+
+border:none;
+
+padding:8px 14px;
+
+border-radius:6px;
+
+cursor:pointer;
+
+color:white;
+
+font-size:14px;
+
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:100px;
+
+padding:120px 20px;
+
+flex-wrap:wrap;
+
+}
+
+.hero-text{
+
+max-width:520px;
+
+}
+
+.hero-text h1{
+
+font-size:48px;
+
+margin-bottom:10px;
+
+}
+
+.hero-text h2{
+
+color:#22c55e;
+
+font-size:26px;
+
+height:32px;
+
+margin-bottom:15px;
+
+}
+
+.hero-text p{
+
+font-size:18px;
+
+opacity:0.9;
+
+}
+
+.highlight{
+
+color:#22c55e;
+
+}
+
+/* Resume button */
+
+.btn{
+
+background:#22c55e;
+
+padding:12px 24px;
+
+border-radius:6px;
+
+color:white;
+
+text-decoration:none;
+
+display:inline-block;
+
+margin-top:20px;
+
+transition:0.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 8px 20px rgba(34,197,94,0.3);
+
+}
+
+/* ================= PROFILE IMAGE ================= */
+
+.profile{
+
+width:220px;
+
+height:220px;
+
+object-fit:cover;
+
+border-radius:50%;
+
+border:4px solid #22c55e;
+
+box-shadow:0 0 50px rgba(34,197,94,0.6);
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0px);}
+
+50%{transform:translateY(-12px);}
+
+100%{transform:translateY(0px);}
+
+}
+
+/* ================= TERMINAL SECTION ================= */
+
+.terminal{
+
+display:flex;
+
+justify-content:center;
+
+padding:60px 20px;
+
+}
+
+.terminal-box{
+
+background:#0f172a;
+
+padding:25px;
+
+border-radius:10px;
+
+font-family:monospace;
+
+width:520px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+
+line-height:1.6;
+
+}
+
+.prompt{
+
+color:#22c55e;
+
+font-weight:bold;
+
+}
+
+/* ================= SECTION LAYOUT ================= */
+
+section{
+
+max-width:1100px;
+
+margin:auto;
+
+padding:80px 20px;
+
+}
+
+section h2{
+
+margin-bottom:25px;
+
+color:#22c55e;
+
+}
+
+/* ================= SKILLS ================= */
+
+.skills{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:12px;
+
+}
+
+.skills span{
+
+background:#1e293b;
+
+padding:8px 14px;
+
+border-radius:6px;
+
+font-size:14px;
+
+}
+
+/* Skill bars */
+
+.skill{
+
+margin-bottom:20px;
+
+}
+
+.skill-bar{
+
+width:100%;
+
+background:#1e293b;
+
+border-radius:6px;
+
+overflow:hidden;
+
+margin-top:6px;
+
+}
+
+.skill-fill{
+
+height:10px;
+
+background:#22c55e;
+
+width:0;
+
+animation:fillSkill 2s forwards;
+
+}
+
+.java{width:85%;}
+
+.kotlin{width:75%;}
+
+.web{width:90%;}
+
+.node{width:70%;}
+
+@keyframes fillSkill{
+
+from{width:0;}
+
+}
+
+/* ================= PROJECT CARDS ================= */
+
+.project-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+/* Glassmorphism */
 
 .project{
 
 background:rgba(255,255,255,0.05);
+
 backdrop-filter:blur(10px);
+
 border:1px solid rgba(255,255,255,0.1);
 
-}
-
-nav{
-
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
-
-}
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:#020617;
-}
-
-nav ul{
-display:flex;
-gap:30px;
-list-style:none;
-margin:0;
-padding:0;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-weight:500;
-}
-body{
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin:0;
-background:linear-gradient(135deg,#0f172a,#020617);
-color:white;
-}
-.hero{
-text-align:center;
-padding:100px 20px;
-}
-
-.hero h1{
-font-size:48px;
-margin-bottom:10px;
-}
-
-.hero h2{
-font-size:26px;
-color:#22c55e;
-}
-.project{
-background:#1e293b;
 padding:25px;
-border-radius:10px;
-transition:0.3s;
-}
 
-.project img{
-width:100%;
-border-radius:6px;
-margin-bottom:15px;
+border-radius:12px;
+
+transition:0.3s;
+
 }
 
 .project:hover{
+
 transform:translateY(-8px);
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-.skills{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+
 }
 
-.skills span{
-background:#1e293b;
-padding:10px 15px;
-border-radius:6px;
+.project h3{
+
+margin-top:15px;
+
+margin-bottom:8px;
+
 }
-section{
-max-width:1000px;
+
+/* Phone mockup */
+
+.phone-mockup{
+
+width:200px;
+
 margin:auto;
-padding:60px 20px;
+
+padding:10px;
+
+background:#111827;
+
+border-radius:25px;
+
+border:3px solid #1f2937;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+
 }
+
+.phone-mockup img{
+
+width:100%;
+
+border-radius:15px;
+
+}
+
+/* ================= CONTACT ================= */
+
+#contact p{
+
+margin-bottom:10px;
+
+}
+
+#contact a{
+
+color:#22c55e;
+
+text-decoration:none;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+text-align:center;
+
+padding:25px;
+
+background:#020617;
+
+margin-top:60px;
+
+font-size:14px;
+
+opacity:0.8;
+
+}
+
+/* ================= LIGHT MODE ================= */
+
+.light{
+
+background:#f5f5f5;
+
+color:#111;
+
+}
+
+.light nav{
+
+background:white;
+
+color:black;
+
+}
+
+.light .project{
+
+background:#e5e7eb;
+
+}
+
+.light .terminal-box{
+
+background:#e5e7eb;
+
+color:black;
+
+}
+
+.light a{
+
+color:#16a34a;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
 .hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:80px;
-gap:50px;
+
+flex-direction:column;
+
+text-align:center;
+
 }
 
 .hero-text{
-max-width:500px;
-}
 
-.hero-text h1{
-font-size:48px;
-margin-bottom:10px;
-}
-
-.hero-text h2{
-color:#22c55e;
-}
-
-.hero-image img{
-width:350px;
-border-radius:12px;
-}
-@media (max-width:768px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-}
-
-.hero-image img{
-width:250px;
-}
+max-width:100%;
 
 }
-.btn{
-background:#22c55e;
-color:white;
-padding:12px 20px;
-border-radius:6px;
-text-decoration:none;
-display:inline-block;
-margin-top:15px;
+
+nav{
+
+padding:15px 25px;
+
+}
+
 }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -9,15 +10,21 @@
 
 <style>
 
-/* GLOBAL */
+/* ===== GLOBAL ===== */
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
-font-family:Arial;
-margin:0;
+font-family:Arial, sans-serif;
 color:white;
 background:linear-gradient(-45deg,#020617,#0f172a,#020617,#020617);
 background-size:400% 400%;
 animation:gradientBG 15s ease infinite;
+line-height:1.6;
 }
 
 @keyframes gradientBG{
@@ -26,14 +33,28 @@ animation:gradientBG 15s ease infinite;
 100%{background-position:0% 50%;}
 }
 
-/* NAVBAR */
+/* ===== PARTICLES ===== */
+
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* ===== NAVBAR ===== */
 
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
+padding:18px 60px;
 background:#020617;
+position:sticky;
+top:0;
+z-index:10;
 }
 
 nav ul{
@@ -45,45 +66,62 @@ list-style:none;
 nav a{
 color:white;
 text-decoration:none;
+font-weight:500;
 }
 
-/* HERO */
+nav a:hover{
+color:#22c55e;
+}
+
+/* ===== HERO ===== */
 
 .hero{
 display:flex;
 align-items:center;
 justify-content:center;
-gap:80px;
+gap:100px;
 padding:120px 20px;
 flex-wrap:wrap;
 }
 
 .hero-text{
-max-width:500px;
+max-width:520px;
 }
 
 .hero-text h1{
-font-size:40px;
+font-size:46px;
 margin-bottom:10px;
 }
 
 .hero-text h2{
 color:#22c55e;
-font-size:26px;
+font-size:28px;
 height:30px;
+margin-bottom:10px;
+}
+
+.hero-text p{
+font-size:18px;
+opacity:0.9;
 }
 
 .btn{
 background:#22c55e;
-padding:12px 22px;
+padding:12px 24px;
 border-radius:6px;
 color:white;
 text-decoration:none;
 display:inline-block;
-margin-top:15px;
+margin-top:20px;
+transition:0.3s;
 }
 
-/* PROFILE */
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 20px rgba(34,197,94,0.4);
+}
+
+/* ===== PROFILE IMAGE ===== */
 
 .profile{
 width:220px;
@@ -91,7 +129,7 @@ height:220px;
 object-fit:cover;
 border-radius:50%;
 border:4px solid #22c55e;
-box-shadow:0 0 30px rgba(34,197,94,0.6);
+box-shadow:0 0 40px rgba(34,197,94,0.6);
 animation:float 4s ease-in-out infinite;
 }
 
@@ -101,29 +139,35 @@ animation:float 4s ease-in-out infinite;
 100%{transform:translateY(0px);}
 }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 
 section{
 max-width:1000px;
 margin:auto;
-padding:60px 20px;
+padding:80px 20px;
 }
 
-/* SKILLS */
+section h2{
+margin-bottom:20px;
+color:#22c55e;
+}
+
+/* ===== SKILLS ===== */
 
 .skills{
 display:flex;
 flex-wrap:wrap;
-gap:10px;
+gap:12px;
 }
 
 .skills span{
 background:#1e293b;
 padding:8px 14px;
 border-radius:6px;
+font-size:14px;
 }
 
-/* PROJECTS */
+/* ===== PROJECTS ===== */
 
 .project-grid{
 display:grid;
@@ -133,14 +177,15 @@ gap:30px;
 
 .project{
 background:#1e293b;
-padding:20px;
-border-radius:10px;
+padding:25px;
+border-radius:12px;
 transition:0.3s;
+text-align:center;
 }
 
 .project:hover{
 transform:translateY(-8px);
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
+box-shadow:0 15px 35px rgba(0,0,0,0.5);
 }
 
 .phone-mockup{
@@ -150,7 +195,6 @@ padding:10px;
 background:#111827;
 border-radius:25px;
 border:3px solid #1f2937;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
 .phone-mockup img{
@@ -158,13 +202,25 @@ width:100%;
 border-radius:15px;
 }
 
-/* FOOTER */
+.project a{
+color:#22c55e;
+text-decoration:none;
+}
+
+/* ===== CONTACT ===== */
+
+#contact p{
+margin-bottom:10px;
+}
+
+/* ===== FOOTER ===== */
 
 footer{
 text-align:center;
-padding:20px;
+padding:25px;
 background:#020617;
 margin-top:40px;
+opacity:0.8;
 }
 
 </style>
@@ -172,6 +228,10 @@ margin-top:40px;
 </head>
 
 <body>
+
+<div id="particles-js"></div>
+
+<!-- NAVBAR -->
 
 <nav>
 
@@ -187,11 +247,11 @@ margin-top:40px;
 
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
 
-<div class="hero-image">
 <img src="assets/profile.png" class="profile">
-</div>
 
 <div class="hero-text">
 
@@ -207,76 +267,46 @@ margin-top:40px;
 
 </section>
 
-<section id="about">
+<!-- ABOUT -->
 
-<h2>About Me</h2>
+<section id="about">
 
 <h2>Career Objective</h2>
 
 <p>
-Information Technology graduate with academic and practical exposure to programming,
-web technologies, networking fundamentals, and introductory machine learning.
-Currently preparing for the Graduate Aptitude Test in Engineering (GATE) to
-strengthen core concepts. Seeking opportunities to apply technical knowledge
-and contribute to operational IT and software environments.
+Information Technology graduate with exposure to programming,
+web technologies, networking fundamentals and machine learning.
+Currently preparing for GATE while seeking opportunities to apply
+technical knowledge in IT environments.
 </p>
 
 <h2>Profile Summary</h2>
 
 <p>
-Detail-oriented IT graduate with experience in software fundamentals, system support,
-web application development, and applied machine learning through academic projects.
-Actively engaged in technical groups and event coordination during undergraduate studies.
+Detail-oriented IT graduate with experience in software fundamentals,
+system support, web development and machine learning projects.
 </p>
 
 <h2>Technical Competencies</h2>
 
 <ul>
-
-<li><strong>Programming & Scripting:</strong> Python, C, C++, Java, PHP</li>
-
-<li><strong>Web Technologies:</strong> HTML, CSS</li>
-
-<li><strong>Machine Learning:</strong> CNN (academic), fundamental ML concepts</li>
-
+<li><strong>Programming:</strong> Python, C, C++, Java, PHP</li>
+<li><strong>Web:</strong> HTML, CSS</li>
+<li><strong>Machine Learning:</strong> CNN (academic)</li>
 <li><strong>Networking:</strong> LAN setup, IP configuration</li>
-
 <li><strong>Operating Systems:</strong> Windows, Linux</li>
-
-<li><strong>IT Support:</strong> OS installation, formatting, troubleshooting</li>
-
-<li><strong>Cybersecurity:</strong> Basic security awareness</li>
-
+<li><strong>IT Support:</strong> OS installation, troubleshooting</li>
 </ul>
 
-<h2>Education</h2>
-
-<p>
-<strong>B.Tech – Information Technology</strong><br>
-AKTU (National Institute of Technology Lucknow)<br>
-2020 – 2024 | ~72%
-</p>
-
-<p>
-<strong>Higher Secondary (HISC)</strong><br>
-JKBOSE – SP Smart Higher Secondary School<br>
-2020 | 84%
-</p>
-
-<p>
-<strong>Secondary School (SSC)</strong><br>
-CBSE – Kendriya Vidyalaya Sunjuwan<br>
-2018 | 84%
-</p>
-
 </section>
+
+<!-- SKILLS -->
 
 <section id="skills">
 
 <h2>Tech Stack</h2>
 
 <div class="skills">
-
 <span>Java</span>
 <span>Kotlin</span>
 <span>Android Studio</span>
@@ -284,10 +314,11 @@ CBSE – Kendriya Vidyalaya Sunjuwan<br>
 <span>Express.js</span>
 <span>MongoDB</span>
 <span>Git</span>
-
 </div>
 
 </section>
+
+<!-- PROJECTS -->
 
 <section id="projects">
 
@@ -305,7 +336,7 @@ CBSE – Kendriya Vidyalaya Sunjuwan<br>
 
 <p>Android workout tracking application with analytics dashboard.</p>
 
-<a href="#">GitHub Repository</a>
+<a href="https://github.com/sahilahmed9786-droid" target="_blank">GitHub Repository</a>
 
 </div>
 
@@ -319,13 +350,15 @@ CBSE – Kendriya Vidyalaya Sunjuwan<br>
 
 <p>Food ordering platform displaying restaurants and menus.</p>
 
-<a href="#">GitHub Repository</a>
+<a href="https://github.com/sahilahmed9786-droid" target="_blank">GitHub Repository</a>
 
 </div>
 
 </div>
 
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -355,36 +388,59 @@ linkedin.com/in/sahil-ahmed-057ab7223
 
 </footer>
 
+<!-- PARTICLES SCRIPT -->
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<script>
+particlesJS("particles-js",{
+particles:{
+number:{value:80},
+size:{value:3},
+move:{speed:1},
+line_linked:{enable:true,opacity:0.2}
+}
+});
+</script>
+
+<!-- TYPING ANIMATION -->
+
 <script>
 
-const textArray = [
+const textArray=[
 "Android Developer",
 "Full Stack Developer",
 "Machine Learning Enthusiast"
 ];
 
-let index = 0;
-let charIndex = 0;
-let isDeleting = false;
+let index=0;
+let charIndex=0;
+let isDeleting=false;
 
 function typeEffect(){
 
-const element = document.getElementById("typing");
-const currentText = textArray[index];
+const element=document.getElementById("typing");
+const current=textArray[index];
 
 if(!isDeleting){
-element.textContent = currentText.substring(0,charIndex++);
-if(charIndex > currentText.length){
-isDeleting = true;
+
+element.textContent=current.substring(0,charIndex++);
+
+if(charIndex>current.length){
+isDeleting=true;
 setTimeout(typeEffect,1000);
 return;
 }
+
 }else{
-element.textContent = currentText.substring(0,charIndex--);
-if(charIndex === 0){
-isDeleting = false;
-index = (index+1)%textArray.length;
+
+element.textContent=current.substring(0,charIndex--);
+
+if(charIndex===0){
+isDeleting=false;
+index=(index+1)%textArray.length;
 }
+
 }
 
 setTimeout(typeEffect,80);
